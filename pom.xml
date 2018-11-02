@@ -32,5 +32,43 @@
             <artifactId>resteasy-jaxrs</artifactId>
             <version>${resteasy.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.tango</groupId>
+            <artifactId>ezTangORB</artifactId>
+            <version>2.0.11</version>
+        </dependency>
+        <dependency>
+            <groupId>org.tango-controls</groupId>
+            <artifactId>JTangoClientLang</artifactId>
+            <version>9.5.10.hzg</version>
+        </dependency>
+        <dependency>
+            <groupId>org.jboss.resteasy</groupId>
+            <artifactId>resteasy-jackson2-provider</artifactId>
+            <version>${resteasy.version}</version>
+        </dependency>
     </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+    <repositories>
+        <repository>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+            <id>bintray-release</id>
+            <name>bintray</name>
+            <url>http://dl.bintray.com/hzgde/hzg-wpn-projects</url>
+        </repository>
+    </repositories>
 </project>
