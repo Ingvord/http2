@@ -5,15 +5,61 @@
     <title>SSE</title>
 </head>
 <body>
-<div id="result"></div>
+<div id="0"></div>
+<div id="0.1"></div>
+<div id="0.2"></div>
+<div id="1"></div>
+<div id="2"></div>
+<div id="3"></div>
+<div id="4"></div>
+<div id="5"></div>
+
+
 <script type="application/javascript">
 
 
-    var source = new EventSource("rest/subscriptions/0");
-    source.onmessage = function(event) {
-        debugger
-        document.getElementById("result").innerHTML = event.data + "<br>";
-    };
+    var source = new EventSource("rest/subscriptions/0/event-stream");
+    // source.onmessage = function(event) {
+    //     document.getElementById("result").innerHTML += event.data + "<br>";
+    // };
+
+        // source.addEventListener(_id,  function(event){
+        //     document.getElementById("0").innerHTML = event.data + "<br>";
+        // });
 </script>
+
+<!--
+<script type="application/javascript">
+
+
+    var source = new EventSource("rest/multi-event");
+    // source.onmessage = function(event) {
+    //     document.getElementById("result").innerHTML += event.data + "<br>";
+    // };
+
+    Array.from(new Array(500), (x,i) => i).forEach(function(id){
+        var _id = id;
+        source.addEventListener(_id,  function(event){
+            document.getElementById("0").innerHTML = event.data + "<br>";
+        });
+    });
+</script>
+-->
+<!--<script type="application/javascript">
+    Array.from(new Array(50), (x,i) => i).forEach(function(id){
+        var _id = id;
+        var source = new EventSource("rest/multi-event/" + _id);
+        // source.addEventListener(_id, function(event){
+        //     document.getElementById(_id).innerHTML = event.data + "<br>";
+        // })
+        source.onmessage =  function(event){
+                // document.getElementById("0").innerHTML = event.data + "<br>";
+            }
+    });
+
+
+
+</script>-->
 </body>
+
 </html>

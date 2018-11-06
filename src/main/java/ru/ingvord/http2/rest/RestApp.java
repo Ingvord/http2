@@ -20,6 +20,7 @@ public class RestApp extends Application {
 //        empty.add(Http2Rest.class);
 //        singletons.add(new Http2Rest());
         singletons.add(new Subscriptions());
+        singletons.add(new MultiEventSource());
     }
 
     @Override
