@@ -12,6 +12,7 @@ import javax.ws.rs.sse.SseEventSink;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.function.BiConsumer;
 
 /**
  * @author Igor Khokhriakov <igor.khokhriakov@hzg.de>
@@ -145,6 +146,14 @@ public class Subscriptions {
     private class Listener1 implements TangoEventListener<Object>{
         SseBroadcaster sseBroadcaster = sse.newBroadcaster();
 
+        {
+            sseBroadcaster.onError(new BiConsumer<SseEventSink, Throwable>() {
+                @Override
+                public void accept(SseEventSink sseEventSink, Throwable throwable) {
+                    System.err.println(throwable.getMessage());
+                }
+            });
+        }
 
         @Override
         public void onEvent(EventData<Object> data) {
@@ -207,7 +216,6 @@ public class Subscriptions {
 
     private class Listener3 implements TangoEventListener<Object>{
             SseBroadcaster sseBroadcaster = sse.newBroadcaster();
-
 
             @Override
             public void onEvent(EventData<Object> data) {
